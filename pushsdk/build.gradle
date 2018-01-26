@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.2.2"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.huawei.android.hms:push:2.5.2.300'
+    compile 'com.meizu.flyme.internet:push-internal:3.4.2@aar'
+    testCompile 'junit:junit:4.12'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile files('src/main/libs/GetuiSDK2.11.1.0.jar')
+    compile files('src/main/libs/jcore-android-1.1.7.jar')
+    compile files('src/main/libs/jpush-android-3.0.9.jar')
+    compile files('src/main/libs/MiPush_SDK_Client_3_2_3.jar')
+    implementation files('src/main/libs/alicloud-android-sdk-httpdns-1.0.7.jar')
+    implementation files('src/main/libs/com.umeng.message_3.1.5.jar')
+    implementation files('src/main/libs/utdid4all-1.1.5.3_proguard.jar')
+}
